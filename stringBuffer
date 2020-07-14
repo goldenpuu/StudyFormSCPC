@@ -1,0 +1,23 @@
+public class stringBuffer {
+	public static void main (String args[]) {
+		String stringValue1 = "TEST 1";
+		String stringValue2 = "TEST 2";
+
+		System.out.println("stringValue1: " + stringValue1.hashCode());
+		System.out.println("stringValue2: " + stringValue2.hashCode());
+		// string 클래스는 주소값이 서로 다름
+		stringValue1 = stringValue1 + stringValue2;
+		System.out.println("stringValue1: " + stringValue1.hashCode());
+		// string은 값을 새로 할당할 때 주소값이 바뀜 이유는 새로 생기기 때문
+		// string이 새로 생길 때 메서드나 변수선언 때문에 추가적인 시간이 소요됨
+		// 즉 string 클래스가 많을 수록 메모리 관리 측면에서 치명적임
+		StringBuffer sb = new StringBuffer();
+		
+		System.out.println("sb: " + sb.hashCode());
+
+		sb.append("TEST StringBuffer");
+		System.out.println("sb: " + sb.hashCode());
+		// 하지만 stringBuffer는 주소값이 변하지 않음
+	}
+}
+// 결론 : StringBuffer를 사용하면 String을 사용하는 것 보다 빠름 
