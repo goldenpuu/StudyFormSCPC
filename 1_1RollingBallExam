@@ -16,7 +16,7 @@ public class RollingBallExam{
     
     test = Integer.parseInt(br.readLine());
     
-    for(i = 0 ; i < test; i++){
+    for(i = 1 ; i <= test; i++){
       StringTokenizer st = new StringTokenizer(br.readLine());
       radius = Integer.parseInt(st.nextToken());
       start_x = Integer.parseInt(st.nextToken());
@@ -24,11 +24,26 @@ public class RollingBallExam{
       num_hurdle =Integer.parseInt(br.readLine());
       answer = 0;
       
-      for(j = 0; j < n ; j++){
+      for(j = 1; j <= num_hurdle ; j++){
           st = new StringTokenizer(br.readLine());
           x1 = Integer.parseInt(st.nextToken());
           x2 = Integer.parseInt(st.nextToken());
           wr = Integer.parseInt(st.nextToken());
           if(x1 > start_x && x2 < end_x){
-            if(wr >= r){
-              answer += (wr-2*r)+Math.PI*r/2;
+            if(wr >= radius){
+              answer += Math.PI*radius;
+              answer += 2*(wr-radius); // 원의 세로이동 값 (반지름의 길이 만큼 덜 올라가고 덜 내려가는 부분을 뺄셈에 추가)
+              }else{      // 장애물의 높이가 원의 반지름 보다 낮을 경우
+              answer += 2*(2*Math.PI*radius* ((90L-Math.toDegrees(Math.asin((double)(radius-wr)/radius)))/360) );
+              }// 부채꼴의 호의 길이 공식 2*파이*r*각도
+            }
+          }
+      }
+      
+      answer += end_x-start_x-(num_hurdel*2*radius); // 원의 가로 이동 값 (호를 그려서 대체된 부분을 뺄셈에 추가)
+      sb.append("Case #"+i+"\n"+(ans+e-s)+"\n");
+    }
+    System.out.println(sb.toString());
+		br.close();
+  }
+}
