@@ -1,0 +1,44 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+import java.util.StringTokenizer;
+
+public class Hamburger {
+	public static void main(String args[]) throws IOException {
+		
+		StringBuilder sb = new StringBuilder();
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		int test;
+		int bread, meet, cabbage;
+		int answer;
+		
+		test = Integer.parseInt(br.readLine());
+		
+		for(int i = 1; i <= test; i++) {
+			StringTokenizer st = new StringTokenizer(br.readLine());
+			bread = Integer.parseInt(st.nextToken());
+			meet = Integer.parseInt(st.nextToken());
+			cabbage = Integer.parseInt(st.nextToken());
+			// 햄버거 1개의  재료는 빵2개 패티1장 양상추3장 이다.
+			answer = 0;
+			
+			if(meet < 1 || bread < 2 || cabbage < 3) {
+				// 재료가 없어서 햄버거를 못 만듬
+			}
+			else{
+				for(int j = 0; j < meet; j++) {
+					if(bread < 2 || cabbage < 3) {break;}
+					answer++;
+					bread-=2;
+					cabbage-=3;
+				}
+			}
+			
+			sb.append("Case #"+i+"\n"+answer+"\n");
+		}
+		
+		System.out.println(sb.toString());
+    	br.close();
+	}
+}
