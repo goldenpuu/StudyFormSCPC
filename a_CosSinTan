@@ -1,6 +1,6 @@
     int wr = 9, r = 10;
-		System.out.println(r*(Math.acos((double)(r-wr)/r)));
-		System.out.println(2*Math.PI*r* ((90L-Math.toDegrees(Math.asin((double)(r-wr)/r)))/360)); // 호 OH의 길이
+		System.out.println("  "+r*(Math.acos((double)(r-wr)/r)));
+		System.out.println("  "+2*Math.PI*r* ((90L-Math.toDegrees(Math.asin((double)(r-wr)/r)))/360)); // 호 OH의 길이
 		System.out.println(Math.sin(Math.acos((double)(r-wr)/r))); // 변 AB의 길이의 10분의 1
 		System.out.println(Math.sqrt(Math.pow(r, 2)-Math.pow(r-wr, 2))); // 변AB의 길이
 		System.out.println("  "+Math.acos((double)(r-wr)/r));
