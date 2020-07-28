@@ -1,5 +1,4 @@
-package math;
-// ÁÖ¾îÁø ¼ö¸¦ ÀÌÁø¼ö·Î Ç¥Çö ÇßÀ» ¶§ 1ÀÇ °¹¼ö´Â?
+// ì£¼ì–´ì§„ ìˆ˜ë¥¼ ì´ì§„ìˆ˜ë¡œ í‘œí˜„ í–ˆì„ ë•Œ 1ì˜ ê°¯ìˆ˜ëŠ”?
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
