@@ -1,0 +1,26 @@
+// 가장 마지막으로 받은 플레이버튼의 종류는?
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+
+public class PlayButton {
+	public static void main(String args[]) throws IOException{
+		StringBuilder sb = new StringBuilder();
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		int test;
+		int sub;
+		test = Integer.parseInt(br.readLine());
+		
+		for(int i = 1; i <= test; i++) {
+			sub = Integer.parseInt(br.readLine());
+			
+			if(sub >= 10000000) {sb.append("Case #"+i+"\nDIAMOND\n");}
+			else if(sub >= 1000000) {sb.append("Case #"+i+"\nGOLD\n");}
+			else if(sub >= 100000) {sb.append("Case #"+i+"\nSILVER\n");}
+			else {sb.append("Case #"+i+"\nNONE\n");}
+		}
+		System.out.println(sb.toString());
+		br.close();
+	}
+}
