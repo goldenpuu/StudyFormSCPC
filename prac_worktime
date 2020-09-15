@@ -1,0 +1,53 @@
+// 근무시간 구하기
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+import java.util.StringTokenizer;
+
+public class worktime {
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
+		
+		
+		int test;
+		int h_i, m_i, time_in; // 출근 시간
+		int h_o, m_o, time_out; // 퇴근 시간
+		int h_w, m_w; // 근무 시간
+		
+		test = Integer.parseInt(br.readLine());
+		
+		for(int i = 1; i <= test; i++) {
+			StringTokenizer st = new StringTokenizer(br.readLine());
+			StringTokenizer st_i = new StringTokenizer(st.nextToken(),":");
+			StringTokenizer st_o = new StringTokenizer(st.nextToken(),":");
+			
+			h_i = Integer.parseInt(st_i.nextToken());
+			m_i = Integer.parseInt(st_i.nextToken());
+			h_o = Integer.parseInt(st_o.nextToken());
+			m_o = Integer.parseInt(st_o.nextToken());
+			
+			time_in = h_i*60+m_i;
+			time_out = h_o*60+m_o;
+			h_w = (time_out-time_in)/60;
+			m_w = (time_out-time_in)%60;
+			
+			if(h_w < 10 && m_w < 10) {
+				sb.append("Case #"+i+"\n0"+h_w+":0"+m_w+"\n");				
+			}
+			else if(h_w < 10) {
+				sb.append("Case #"+i+"\n0"+h_w+":"+m_w+"\n");
+			}
+			else if(m_w < 10) {
+				sb.append("Case #"+i+"\n"+h_w+":0"+m_w+"\n");
+			}
+			else {
+				sb.append("Case #"+i+"\n"+h_w+":"+m_w+"\n");
+			}
+		}
+		
+		System.out.println(sb.toString());
+		br.close();
+	}
+}
