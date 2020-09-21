@@ -1,0 +1,55 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+import java.util.StringTokenizer;
+
+public class Prac_goodPlace {
+
+	public static void main(String[] args) throws IOException {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb =new StringBuilder();
+		
+		int test;
+		
+		test = Integer.parseInt(br.readLine());
+		
+		for(int i = 1; i <= test; i++) {
+			StringTokenizer st = new StringTokenizer(br.readLine());
+			int x = 0, y = 0;
+			x = Integer.parseInt(st.nextToken());
+			y = Integer.parseInt(st.nextToken());
+			int answer = 0;
+			
+			int[][] map = new int[y][x];
+			
+			for(y = 0; y < map.length; y++) {
+				st = new StringTokenizer(br.readLine());
+				for(x = 0; x < map[y].length; x++) {
+					map[y][x] = Integer.parseInt(st.nextToken());
+				}
+			}
+			
+			for(y = 0; y < map.length-4; y++) {
+				for(x = 0; x < map[y].length-4; x++) {
+					int num = 0;
+					
+					for(int n = 0; n < 5; n++) {
+						for(int j = 0; j < 5; j++) {
+							num += map[y+n][x+j];
+						}
+					}
+					
+					if(answer < num) {
+						answer = num;
+					}
+				}
+			}
+			
+			sb.append("Case #"+i+"\n"+answer+"\n");
+		}
+		
+		System.out.println(sb.toString());
+		br.close();
+	}
+}
