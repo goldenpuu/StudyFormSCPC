@@ -1,0 +1,74 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class Prac_linerEquation {
+	public static void main(String[] args) throws IOException {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb =new StringBuilder();
+		
+		int test;
+		
+		test = Integer.parseInt(br.readLine());
+		
+		for(int i = 1; i <= test; i++) {
+			StringTokenizer st = new StringTokenizer(replace(br.readLine()));
+			int a = Integer.parseInt(st.nextToken());
+			int b = Integer.parseInt(st.nextToken()) + Integer.parseInt(st.nextToken());
+			
+			if(a == b) {
+				sb.append("Case #"+i+"\n1 / 1\n");				
+			}
+			else if(a > b) {
+				sb.append("Case #"+i+"\n"+(b/gcd(b,a))+" / "+(a/gcd(b,a))+"\n");
+			}else {
+				sb.append("Case #"+i+"\n"+(b/gcd(a,b))+" / "+(a/gcd(a,b))+"\n");
+			}
+		}
+		
+		System.out.println(sb.toString());
+		br.close();
+	}
+
+	public static String replace(String str) {
+		str = str.replace("x", " ");
+		str = str.replace("-", " ");
+		str = str.replace("=", " ");
+		return str;
+	}
+	
+	public static int gcd(int small, int big) {
+		if(big == 0) {
+			return small;
+		}
+		else {
+			return gcd(big, small%big);
+		}
+	}
+	
+//	public static String cal(int a, int b) {
+//		if(a == b) {
+//			return "1 / 1";			
+//		}
+//		else if(a > b){
+//			for(int i = 1; i <= a; i++) {
+//				if(a%i == 0 && b%i == 0) {
+//					b/=i;a/=i;
+//					i = 2;
+//				}
+//			}
+//			return b+" / "+a;
+//		}
+//		else {
+//			for(int i = 1; i <= b; i++) {
+//				if(a%i == 0 && b%i == 0) {
+//					b/=i;a/=i;
+//					i = 2;
+//				}
+//			}
+//			return b+" / "+a;
+//		}
+//	}
+}
